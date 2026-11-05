@@ -17,12 +17,10 @@ tabela_trimestral = df_limpo.pivot_table(
     columns='Trimestre_Curto',
     values='Valor',
     aggfunc='sum',
-    sort=False
-)
+    sort=False)
 
 tabela_trimestral_visivel = tabela_trimestral.apply(
-    lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", "."))
-)
+    lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", ".")))
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
