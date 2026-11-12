@@ -21,12 +21,10 @@ def tabela_pib():
         columns='Trimestre_Curto',
         values='Valor',
         aggfunc='sum',
-        sort=False
-    )
+        sort=False)
 
     tabela_trimestral_visivel = tabela_trimestral.apply(
-        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", "."))
-    )
+        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", ".")))
 
     return tabela_trimestral_visivel
 
@@ -46,12 +44,10 @@ def soma_ano():
         columns='Ano',
         values='Valor',
         aggfunc='sum',
-        sort=False
-    )
+        sort=False)
 
     tabela_ano = tabela_ano.apply(
-        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", "."))
-    )
+        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", ".")))
 
     return tabela_ano
 
@@ -70,8 +66,7 @@ def soma_4t():
 
     df_limpo['Ano_Inicio'] = df_limpo['Ano'] - df_limpo['Trim_Num'].isin([1, 2]).astype(int)
     df_limpo['Soma_4T'] = (
-        df_limpo['Ano_Inicio'].astype(str) + '/' + (df_limpo['Ano_Inicio'] + 1).astype(str)
-    )
+        df_limpo['Ano_Inicio'].astype(str) + '/' + (df_limpo['Ano_Inicio'] + 1).astype(str))
 
     contagem = df_limpo.groupby('Soma_4T')['Trimestre'].nunique()
     periodos_completos = contagem[contagem == 4].index
@@ -82,8 +77,7 @@ def soma_4t():
         columns='Soma_4T',
         values='Valor',
         aggfunc='sum',
-        sort=False
-    )
+        sort=False)
 
     tabela_4t_visivel = tabela_4t.apply(
         lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", "."))
@@ -110,8 +104,7 @@ def diferenca_semestres():
         columns='Ano',
         values='Valor',
         aggfunc='sum',
-        sort=False
-    )
+        sort=False)
 
     anos_anteriores = [col for col in tabela_semestral.columns if col != '2026']
     tabela_dif_sem = tabela_semestral[anos_anteriores].apply(lambda col: tabela_semestral['2026'] - col)
@@ -120,7 +113,6 @@ def diferenca_semestres():
     tabela_dif_sem['2026(1ºS)'] = tabela_semestral['2026']
 
     tabela_dif_sem_visivel = tabela_dif_sem.apply(
-        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", "."))
-    )
+        lambda col: col.map(lambda x: f"{x:,.0f}".replace(",", ".")))
 
     return tabela_dif_sem_visivel
