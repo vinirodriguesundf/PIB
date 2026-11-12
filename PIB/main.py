@@ -4,16 +4,15 @@ import funcoes
 
 def main():
     while True:
-        print("\n" + "=" * 65)
-        print("               MENU DE TABELAS DO PIB (IBGE)")
-        print("=" * 65)
+        print("\n" + "=" * 73)
+        print("                      MENU DE TABELAS DO PIB (IBGE)")
+        print("=" * 73)
         print("1 - Tabela por Trimestre (tabela_pib)")
         print("2 - Tabela Soma por Ano (soma_ano)")
         print("3 - Tabela Soma de 4 em 4 Trimestres (soma_4t)")
         print("4 - Tabela Diferença 1º Semestre 2026 vs Anteriores (diferenca_semestres)")
-        print("5 - Mostrar TODAS as tabelas")
         print("0 - Sair")
-        print("=" * 65)
+        print("=" * 73)
 
         escolha = input("Digite o número da tabela que deseja ver: ").strip()
 
@@ -29,20 +28,11 @@ def main():
         elif escolha == '4':
             print("\n--- TABELA DIFERENÇA DE SEMESTRES ---")
             print(funcoes.diferenca_semestres())
-        elif escolha == '5':
-            print("\n--- [1] TABELA POR TRIMESTRE ---")
-            print(funcoes.tabela_pib())
-            print("\n--- [2] TABELA SOMA POR ANO ---")
-            print(funcoes.soma_ano())
-            print("\n--- [3] TABELA SOMA DE 4 EM 4 TRIMESTRES ---")
-            print(funcoes.soma_4t())
-            print("\n--- [4] TABELA DIFERENÇA DE SEMESTRES ---")
-            print(funcoes.diferenca_semestres())
         elif escolha == '0':
             print("Saindo...")
             break
         else:
-            print("Opção inválida! Escolha de 0 a 5.")
+            print("Opção inválida! Escolha de 0 a 4.")
 
 
 if __name__ == '__main__':
